@@ -23,12 +23,13 @@
   "homepage": "https://github.com/DankWolf/PersonalSomm#readme",
   "dependencies": {
     "next": "^13.2.3",
+    "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@types/node": "18.15.0",
+    "@types/node": "^18.15.0",
     "@types/react": "18.0.28"
   }
 }
