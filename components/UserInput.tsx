@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChatGPTResponse from "./ChatGPTResponse";
 // import ChatGPTResponse from "./ChatGPTResponse";
 // const { Configuration, OpenAIApi } = require("openai");
 
@@ -24,33 +25,13 @@ const UserInput = () => {
 
     //now querry chat GPT to get the potential wine pairing.
     async function request() {
-      // const response = await openai.createCompletion({
-      //   model: "text-davinci-003",
-      //   prompt: "what wine would you pair with chicken?",
-      //   temperature: 0.7,
-      //   max_tokens: 7,
-      // });
-      // console.log("response from ChatGPT:", response);
-      const chatData = await fetch(chatUrl, {
+      const data = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-        body: {
-          // @ts-ignore
-          model: "text-davinci-003",
-          prompt: `${query}`,
-          max_tokens: 100,
-          temperature: 0,
-        },
-      });
-      console.log("response from chatGPT:", chatData);
-      // .then((res) => res.json());
-      // .then((returnData)) => {
-      //   return returnData;
-      // })
+        body: `What wine pairs with ${flavor}?`,
+      }).then((res) => res.json());
+      setChatResponse(data.content);
     }
+
     request();
     setFlavor("");
   };
@@ -72,7 +53,7 @@ const UserInput = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-      {/* <ChatGPTResponse text={chatResponse} /> */}
+      <ChatGPTResponse text={chatResponse} />
     </>
   );
 };
