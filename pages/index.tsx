@@ -1,5 +1,8 @@
 import Head from "next/head";
+import ChatGPTResponse from "../components/ChatGPTResponse";
 import UserInput from "../components/UserInput";
+
+
 function HomePage() {
   return (
     <>

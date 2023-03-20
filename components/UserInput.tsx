@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChatGPTResponse from "./ChatGPTResponse";
+import parseChatGPTResponse from "../parseChatGPTResponse";
 // import ChatGPTResponse from "./ChatGPTResponse";
 // const { Configuration, OpenAIApi } = require("openai");
 
@@ -35,6 +36,16 @@ const UserInput = () => {
     request();
     setFlavor("");
   };
+
+  useEffect(() => {
+    const wineList = parseChatGPTResponse(chatResponse);
+  }, [chatResponse])
+
+//wineList returns array of varietal strings
+  //iterate; for each wine grab link & image and pass it to a React button creation function
+//reference Json files for a link
+//pass that link to buttons that render on UserInput
+
 
   return (
     <>
